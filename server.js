@@ -22,6 +22,14 @@ app.use(bodyParser.json());                                     // parse applica
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api as json
 app.use(methodOverride());
 
+// Models
+
+var Todo = mongoose.model('Todo', {
+  text:  String
+});
+
+// Routes
+require('./routes.js')(app, Todo);
 
 // listen with node
 app.listen(port);
